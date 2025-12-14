@@ -1,302 +1,369 @@
-<!DOCTYPE html>
-<html lang="zh">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的导航页</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('http://files.unn.pp.ua/download/pictures%2Fbackground.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        
-        .header {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        
-        .search-container {
-            padding: 3rem;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 20px;
-        }
-        
-        .search-box {
-            width: 100%;
-            padding: 15px 18px;
-            font-size: 20px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 12px;
-        }
-        
-        .link-item {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 12px;
-            transition: all 0.2s;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            height: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .link-item:hover {
-            background-color: rgba(255, 255, 255, 0.85);
-            transform: translateY(-2px);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-        }
-        
-        .link-item a {
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-        }
-        
-        .link-icon {
-            width: 24px;
-            height: 24px;
-            margin-bottom: 8px;
-            object-fit: contain;
-        }
-        
-        .link-text {
-            font-size: 14px;
-            text-align: center;
-            word-break: break-word;
-            max-width: 100%;
-        }
-        .foot_marker {
-            position: fixed;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 12px;
-            color: rgba(255,255,255,0.8);
-            z-index: 999;
-            padding: 10px 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
-        }
-
-        .foot_marker a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 15px;
-        }
-
-        .foot_marker a:hover {
-            color: #4388e0;
-        }        
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>守护野生动物 | 公益宣传页</title>
+  <meta name="description" content="保护野生动物公益宣传：了解现状、参与方式与行动清单。" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#101a30;
+      --text:#eaf0ff;
+      --muted:#b7c3e6;
+      --brand:#5ce1a2;
+      --brand2:#66a6ff;
+      --danger:#ff6b6b;
+      --ring: rgba(92,225,162,.35);
+      --radius:16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "PingFang SC","Microsoft YaHei", Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(102,166,255,.30), transparent 55%),
+        radial-gradient(900px 500px at 85% 10%, rgba(92,225,162,.22), transparent 60%),
+        linear-gradient(180deg, #070b14 0%, var(--bg) 50%, #070b14 100%);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(7,11,20,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px; max-width:var(--max); margin:0 auto;}
+    .logo{display:flex; align-items:center; gap:10px; text-decoration:none}
+    .mark{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 0 0 6px rgba(102,166,255,.12);
+    }
+    .logo b{letter-spacing:.5px}
+    nav{display:flex; gap:10px; flex-wrap:wrap}
+    nav a{
+      text-decoration:none;
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      color:var(--muted);
+      transition:.2s;
+    }
+    nav a:hover{border-color: rgba(92,225,162,.55); color:var(--text); box-shadow: 0 0 0 4px var(--ring);}
+    .hero{
+      margin-top:22px;
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: linear-gradient(135deg, rgba(92,225,162,.16), rgba(102,166,255,.12));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+    }
+    .hero-in{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      padding:26px;
+      align-items:center;
+    }
+    @media (max-width: 860px){
+      .hero-in{grid-template-columns:1fr}
+    }
+    .kicker{color:var(--brand); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:12px}
+    h1{margin:.35rem 0 .6rem; font-size: 34px; line-height:1.12}
+    p{margin:.35rem 0; color:var(--muted); line-height:1.65}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      text-decoration:none;
+      transition:.2s;
+      background: rgba(16,26,48,.35);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(92,225,162,.95), rgba(102,166,255,.90));
+      color:#06101a;
+      border-color: transparent;
+      font-weight:800;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 10px 26px rgba(0,0,0,.25)}
+    .panel{
+      background: rgba(16,26,48,.55);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card{padding:16px}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+      background: rgba(7,11,20,.25);
+      font-size: 13px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top:16px;
+    }
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    .col-12{grid-column: span 12}
+    @media (max-width: 860px){
+      .col-6,.col-4{grid-column: span 12}
+    }
+    section{margin-top:18px}
+    h2{font-size: 20px; margin:0 0 10px}
+    ul{margin:0; padding-left: 18px; color:var(--muted); line-height:1.75}
+    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    @media (max-width: 860px){.cards{grid-template-columns:1fr}}
+    .card{padding:14px}
+    .card h3{margin:8px 0 6px; font-size: 16px}
+    .mini{font-size: 13px; color:var(--muted)}
+    .svgimg{width:100%; height:150px; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.10)}
+    .form{
+      display:grid; grid-template-columns: 1fr 1fr; gap:12px;
+    }
+    @media (max-width: 860px){.form{grid-template-columns:1fr}}
+    label{display:block; font-size: 13px; color:var(--muted); margin:0 0 6px}
+    input, textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,11,20,.25);
+      color:var(--text);
+      outline:none;
+    }
+    input:focus, textarea:focus{box-shadow: 0 0 0 4px var(--ring); border-color: rgba(92,225,162,.5)}
+    textarea{min-height: 96px; resize: vertical}
+    footer{padding:26px 0 40px; color:var(--muted); text-align:center}
+    .note{font-size: 12px; color: rgba(183,195,230,.85)}
+    .pill{
+      display:inline-block;
+      margin-top:10px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border:1px dashed rgba(255,255,255,.18);
+      color: rgba(234,240,255,.85);
+    }
+  </style>
 </head>
+
 <body>
-    <div class="search-container">
-        <form action="https://www.google.com/search" method="get" target="_blank">
-            <input class="search-box" type="text" name="q" placeholder="Google 搜索...">
+  <header>
+    <div class="topbar">
+      <a class="logo" href="#top" aria-label="返回顶部">
+        <span class="mark" aria-hidden="true"></span>
+        <b>守护野生动物</b>
+      </a>
+      <nav aria-label="站点导航">
+        <a href="#why">为什么要保护</a>
+        <a href="#do">怎么参与</a>
+        <a href="#species">关注物种</a>
+        <a href="#pledge">承诺行动</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <div class="hero">
+      <div class="hero-in">
+        <div>
+          <div class="kicker">Wildlife Protection</div>
+          <h1>让更多生命，继续在地球上自由呼吸</h1>
+          <p>这是一个单页静态宣传模板：用于科普、社团展示、作业或公益倡议。可替换为你要保护的具体动物（如穿山甲、东北虎、朱鹮等）。</p>
+          <div class="cta">
+            <a class="btn primary" href="#pledge">马上承诺一个行动</a>
+            <a class="btn" href="#species">看看重点物种</a>
+          </div>
+          <p class="note" style="margin-top:10px">提示：本页面不包含任何欺骗或仿冒登录功能，仅做公益宣传展示。</p>
+        </div>
+
+        <div class="panel hero-card">
+          <div class="badge">今日小目标：不购买野生动物制品</div>
+          <div style="height:10px"></div>
+          <div class="svgimg" role="img" aria-label="动物剪影占位图">
+            <svg viewBox="0 0 900 420" width="100%" height="100%" preserveAspectRatio="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g" x1="0" x2="1">
+                  <stop offset="0" stop-color="#5ce1a2" stop-opacity=".35"/>
+                  <stop offset="1" stop-color="#66a6ff" stop-opacity=".25"/>
+                </linearGradient>
+              </defs>
+              <rect x="0" y="0" width="900" height="420" fill="url(#g)"/>
+              <circle cx="160" cy="160" r="90" fill="rgba(255,255,255,.20)"/>
+              <circle cx="280" cy="210" r="65" fill="rgba(255,255,255,.16)"/>
+              <circle cx="620" cy="170" r="110" fill="rgba(0,0,0,.14)"/>
+              <path d="M520 300 C 560 240, 700 240, 740 300 C 700 340, 560 340, 520 300 Z"
+                    fill="rgba(0,0,0,.18)"/>
+              <text x="26" y="390" fill="rgba(234,240,255,.8)" font-size="22" font-family="system-ui, sans-serif">
+                Replace with your own photos / illustrations
+              </text>
+            </svg>
+          </div>
+          <p style="margin-top:10px">
+            站点用途：社团介绍、科普小站、活动报名页（可对接后端）或课堂作业展示。
+          </p>
+          <span class="pill">单文件可运行 · 易改色 · 易扩展</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="why" class="grid">
+      <div class="panel col-6" style="padding:16px">
+        <h2>为什么要保护</h2>
+        <p>保护野生动物不仅是“爱心”，也是对生态系统稳定和生物多样性的守护。</p>
+        <ul>
+          <li>维持食物网与生态平衡，减少系统性风险。</li>
+          <li>保留遗传多样性，增强生态适应与恢复能力。</li>
+          <li>让更多自然教育与科学研究成为可能。</li>
+        </ul>
+      </div>
+      <div class="panel col-6" style="padding:16px">
+        <h2>常见威胁</h2>
+        <ul>
+          <li>非法猎捕与野生动物交易。</li>
+          <li>栖息地破碎化（道路、开垦、城市扩张）。</li>
+          <li>污染、气候变化与外来入侵物种。</li>
+        </ul>
+        <p class="note">可把这一块改成你选定物种的“主要威胁 + 数据来源链接”。</p>
+      </div>
+    </section>
+
+    <section id="do" class="grid">
+      <div class="panel col-12" style="padding:16px">
+        <h2>怎么参与（可直接照做）</h2>
+        <div class="cards" style="margin-top:10px">
+          <div class="panel card">
+            <div class="badge">日常</div>
+            <h3>拒绝购买与传播</h3>
+            <p class="mini">不买野生动物制品，不转发来源不明的“萌宠买卖/异宠交易”。</p>
+          </div>
+          <div class="panel card">
+            <div class="badge">公众监督</div>
+            <h3>发现线索就举报</h3>
+            <p class="mini">遇到疑似非法交易/猎捕线索，保存证据并向相关平台与部门反馈。</p>
+          </div>
+          <div class="panel card">
+            <div class="badge">公益</div>
+            <h3>参与志愿与捐助</h3>
+            <p class="mini">选择透明、合规的公益组织，关注项目进展与公开披露。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="species" class="grid">
+      <div class="panel col-12" style="padding:16px">
+        <h2>关注物种（示例卡片）</h2>
+        <p>把下面的名称与简介替换成你作业/项目选定的保护动物，并添加图片与参考链接。</p>
+        <div class="cards" style="margin-top:10px">
+          <article class="panel card">
+            <div class="svgimg" aria-hidden="true">
+              <svg viewBox="0 0 900 420" width="100%" height="100%" preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect width="900" height="420" fill="rgba(102,166,255,.22)"/>
+                <path d="M170 310 C 240 200, 380 200, 450 310 C 380 365, 240 365, 170 310 Z"
+                  fill="rgba(0,0,0,.18)"/>
+              </svg>
+            </div>
+            <h3>物种 A（示例）</h3>
+            <p class="mini">一句话介绍：分布、特征、面临的主要威胁。</p>
+          </article>
+          <article class="panel card">
+            <div class="svgimg" aria-hidden="true">
+              <svg viewBox="0 0 900 420" width="100%" height="100%" preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect width="900" height="420" fill="rgba(92,225,162,.18)"/>
+                <circle cx="450" cy="210" r="120" fill="rgba(0,0,0,.16)"/>
+              </svg>
+            </div>
+            <h3>物种 B（示例）</h3>
+            <p class="mini">一句话介绍：栖息地、保护级别、正在进行的保护行动。</p>
+          </article>
+          <article class="panel card">
+            <div class="svgimg" aria-hidden="true">
+              <svg viewBox="0 0 900 420" width="100%" height="100%" preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="rgba(255,255,255,.12)"/>
+                    <stop offset="1" stop-color="rgba(0,0,0,.18)"/>
+                  </linearGradient>
+                </defs>
+                <rect width="900" height="420" fill="url(#gg)"/>
+                <path d="M280 270 L450 140 L620 270 Z" fill="rgba(102,166,255,.25)"/>
+              </svg>
+            </div>
+            <h3>物种 C（示例）</h3>
+            <p class="mini">一句话介绍：繁殖现状、救护与栖息地修复需求。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pledge" class="grid">
+      <div class="panel col-12" style="padding:16px">
+        <h2>承诺行动（前端示例）</h2>
+        <p>这是前端展示表单：不会真的提交到服务器；若需要提交，可再接后端或表单服务。</p>
+
+        <form class="form" onsubmit="return pledge(event)">
+          <div>
+            <label for="name">昵称</label>
+            <input id="name" name="name" placeholder="例如：小林" maxlength="20" />
+          </div>
+          <div>
+            <label for="city">所在城市</label>
+            <input id="city" name="city" placeholder="例如：长沙" maxlength="20" />
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <label for="act">准备从今天开始做什么</label>
+            <textarea id="act" name="act" placeholder="例如：拒绝购买野生动物制品；每月参加一次净滩/巡护活动；向朋友科普……" maxlength="200"></textarea>
+          </div>
+          <div style="grid-column: 1 / -1; display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+            <button class="btn primary" type="submit">提交承诺</button>
+            <span id="msg" class="mini" aria-live="polite"></span>
+          </div>
         </form>
-    </div>
-    
-    <div class="container">
-        <!-- 第一行 -->
-        <div class="link-item">
-            <a href="https://www.google.com" target="_blank">
-                <img class="link-icon" src="https://www.google.com/favicon.ico" alt="Google">
-                <span class="link-text">Google</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.baidu.com" target="_blank">
-                <img class="link-icon" src="https://www.baidu.com/favicon.ico" alt="Baidu">
-                <span class="link-text">Baidu</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.youtube.com" target="_blank">
-                <img class="link-icon" src="https://www.youtube.com/favicon.ico" alt="YouTube">
-                <span class="link-text">Youtube</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://mail.google.com/mail/u/0/" target="_blank">
-                <img class="link-icon" src="https://mail.google.com/favicon.ico" alt="Gmail">
-                <span class="link-text">Gmail</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://github.com" target="_blank">
-                <img class="link-icon" src="https://github.com/favicon.ico" alt="GitHub">
-                <span class="link-text">GitHub</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://ip.sb" target="_blank">
-                <img class="link-icon" src="https://ip.sb/favicon.ico" alt="IP SB">
-                <span class="link-text">ip.sb</span>
-            </a>
-        </div>
-        
-        <!-- 第二行 -->
-        <div class="link-item">
-            <a href="https://dash.cloudflare.com" target="_blank">
-                <img class="link-icon" src="https://www.cloudflare.com/favicon.ico" alt="Cloudflare">
-                <span class="link-text">Cloudflare</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://chat.openai.com" target="_blank">
-                <img class="link-icon" src="https://chat.openai.com/favicon.ico" alt="ChatGPT">
-                <span class="link-text">Chatgpt</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://huggingface.co" target="_blank">
-                <img class="link-icon" src="https://huggingface.co/favicon.ico" alt="Hugging Face">
-                <span class="link-text">Huggingface</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.itdog.cn" target="_blank">
-                <i class="fas fa-network-wired link-icon"></i>
-                <span class="link-text">ITDOG - 在线ping</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://ping0.cc" target="_blank">
-                <i class="fas fa-database link-icon"></i>
-                <span class="link-text">Ping0</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="#" target="_blank">
-                <i class="fas fa-fingerprint link-icon"></i>
-                <span class="link-text">浏览器指纹</span>
-            </a>
-        </div>
-        
-        <!-- 第三行 -->
-        <div class="link-item">
-            <a href="https://ssss.nyc.mn" target="_blank">
-                <i class="fas fa-tachometer-alt link-icon"></i>
-                <span class="link-text">nezha面板</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://hoppscotch.io" target="_blank">
-                <img class="link-icon" src="https://discord.com/favicon.ico" alt="Discord">
-                <span class="link-text">Api测试</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://who.cx" target="_blank">
-                <i class="fas fa-globe link-icon"></i>
-                <span class="link-text">who.cx</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.domcomp.com" target="_blank">
-                <i class="fas fa-tags link-icon"></i>
-                <span class="link-text">域名比价</span>
-            </a>
-        </div>
-        
-        <div class="link-item">
-            <a href="https://www.nodeseek.com" target="_blank">
-                <i class="fas fa-server link-icon"></i>
-                <span class="link-text">NodeSeek</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://linux.do" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">Linux do</span>
-            </a>
-        </div>
-        
-        <!-- 第四行 -->
-        <div class="link-item">
-            <a href="https://music.gvrander.eu.org" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">在线音乐</span>
-            </a>           
-        </div>
-        <div class="link-item">
-            <a href="https://www.freereceivesms.com" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">免费接码</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://sublink.eooce.com" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">订阅转换</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://ssh.eooce.com" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">webssh</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://filebox.nnuu.nyc.mn" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">文件快递柜</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://address.nnuu.nyc.mn" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">真实地址生成</span>
-            </a> 
-        </div>
+      </div>
+    </section>
 
-        <!-- 版权 -->
-        <div class="foot_marker">
-        <a href="https://github.com/eooce" target="_blank">Powered by eooce</a>
-    </div>
+    <footer>
+      <div>© <span id="y"></span> 守护野生动物 · 静态公益宣传页模板</div>
+      <div class="note">如需加多页面：复制本文件并修改导航链接；或改为多页目录结构。</div>
+    </footer>
+  </main>
 
-    <script>
-        document.querySelectorAll('.link-item:not(.empty)').forEach(item => {
-            const icon = item.querySelector('img.link-icon');
-            if (icon) {
-                icon.onerror = function() {
-                    this.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJzNC40NzcgMTAgMTAgMTAgMTAtNC40NzcgMTAtMTBTMTcuNTIzIDIgMTIgMnptMCAyYzQuNDE4IDAgOCAzLjU4MiA4IDhzLTMuNTgyIDgtOCA4LTgtMy41ODItOC04IDMuNTgyLTggOC04eiIgZmlsbD0iIzMzMyIvPjwvc3ZnPg==';
-                }
-            }
-        });
-    </script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    function pledge(e){
+      e.preventDefault();
+      const name = (document.getElementById("name").value || "朋友").trim();
+      const act = (document.getElementById("act").value || "").trim();
+
+      const msg = document.getElementById("msg");
+      if(!act){
+        msg.textContent = "请先写下一个你愿意执行的行动。";
+        msg.style.color = "rgba(255,107,107,.95)";
+        return false;
+      }
+      msg.textContent = name + "，已记录你的承诺："" + act.slice(0, 60) + (act.length>60 ? "…" : "") + """;
+      msg.style.color = "rgba(92,225,162,.95)";
+      return false;
+    }
+  </script>
 </body>
 </html>
